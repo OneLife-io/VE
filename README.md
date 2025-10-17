@@ -208,6 +208,30 @@ node examples/config-provider-usage.js
 - **Development Roadmap**: [ROADMAP.md](ROADMAP.md) - 13-sprint development plan
 - **Implementation Summary**: [IMPLEMENTATION_COMPLETE.md](IMPLEMENTATION_COMPLETE.md) - Complete project history
 
+## Demo UI (Desktop and Phone)
+
+This repo includes a minimal e‑commerce demo under `client/` with a matching API under `server/`.
+
+- Start both servers:
+
+  ```bash
+  make dev
+  ```
+
+- Open the frontend:
+
+  - <http://localhost:8080>
+
+- Try it on your phone:
+  - Ensure your phone is on the same Wi‑Fi network
+  - Visit http://YOUR_COMPUTER_IP:8080
+  - The UI is responsive with a mobile menu (☰) and product cards
+
+Notes:
+
+- The frontend talks to the backend at <http://localhost:3000> (see `client/js/api.js`).
+- Auth, products, cart, and orders are available via the demo server routes.
+
 ## Contributing
 
 Contributions are welcome! When adding new resources:
