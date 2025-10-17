@@ -35,7 +35,7 @@ console.log('Example 1: Using Constants');
 console.log(`Application Name: ${APP_NAME}`);
 console.log(`HTTP OK Status: ${HTTP_STATUS.OK}`);
 console.log(`Admin Role: ${USER_ROLES.ADMIN}`);
-console.log(`Min Password Length: ${VALIDATION.MIN_PASSWORD_LENGTH}`);
+console.log(`Password Requirements: ${VALIDATION.MIN_PASSWORD_LENGTH}-${VALIDATION.MAX_PASSWORD_LENGTH} characters`);
 console.log(`Currency: ${BUSINESS.CURRENCY} (${BUSINESS.CURRENCY_SYMBOL})`);
 console.log(`Tax Rate: ${BUSINESS.TAX_RATE * 100}%\n`);
 
