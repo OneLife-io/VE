@@ -76,6 +76,35 @@ app.get('/health', (req, res) => {
     });
 });
 
+// Liveness (no dependency checks)
+app.get('/healthz', (req, res) => {
+    res.status(HTTP_STATUS.OK).json({
+        status: 'ok',
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString(),
+        version: config.app.version
+    });
+});
+
+// Readiness (lightweight dependency checks)
+app.get('/readyz', (req, res) => {
+    const checks = {
+        configLoaded: Boolean(config && config.app && config.app.name),
+        envPresent: typeof process.env.NODE_ENV !== 'undefined',
+        corsConfigured: typeof config.security.corsOrigin !== 'undefined',
+    };
+
+    const allOk = Object.values(checks).every(Boolean);
+
+    res.status(allOk ? HTTP_STATUS.OK : HTTP_STATUS.SERVICE_UNAVAILABLE).json({
+        status: allOk ? 'ready' : 'degraded',
+        uptime: process.uptime(),
+        environment: config.app.environment,
+        version: config.app.version,
+        checks
+    });
+});
+
 // API routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
