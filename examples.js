@@ -6,12 +6,15 @@
  */
 
 // Import individual resources
-import { 
-  APP_NAME, 
-  HTTP_STATUS, 
+import {
+  APP_NAME,
+  HTTP_STATUS,
   USER_ROLES,
   VALIDATION,
-  BUSINESS
+  BUSINESS,
+  CRITERIA,
+  MATCH_CRITERIA,
+  VALIDATION_CRITERIA
 } from './src/constants/index.js';
 
 import {
@@ -134,4 +137,44 @@ console.log(`Tax (${BUSINESS.TAX_RATE * 100}%): ${BUSINESS.CURRENCY_SYMBOL}${tax
 const total = afterDiscount + tax;
 console.log(`Total: ${BUSINESS.CURRENCY_SYMBOL}${total.toFixed(2)}\n`);
 
-console.log('=== End of Examples ===');
+// Example 10: Using Criteria Constants
+console.log('Example 10: Using Criteria Constants');
+
+// Search and filtering example
+const searchParams = {
+  query: 'laptop',
+  sortBy: CRITERIA.SORT.PRICE_ASC,
+  filterBy: {
+    status: CRITERIA.FILTER.STATUS.ACTIVE,
+    category: CRITERIA.FILTER.CATEGORY.PRODUCT,
+    priceRange: CRITERIA.PRICE_RANGE.BETWEEN_100_500
+  },
+  limit: CRITERIA.SEARCH.DEFAULT_LIMIT
+};
+
+console.log('Search Parameters:', JSON.stringify(searchParams, null, 2));
+
+// Validation criteria example
+const productData = {
+  name: 'Gaming Laptop',
+  description: 'High-performance gaming laptop with advanced graphics',
+  price: 1299.99,
+  category: 'electronics'
+};
+
+console.log('\nProduct Validation:');
+console.log(`Required fields for product: ${VALIDATION_CRITERIA.REQUIRED_FIELDS.PRODUCT_CREATION.join(', ')}`);
+console.log(`Description length requirement: ${VALIDATION_CRITERIA.QUALITY.MIN_DESCRIPTION_LENGTH}-${VALIDATION_CRITERIA.QUALITY.MAX_DESCRIPTION_LENGTH} chars`);
+console.log(`Current description length: ${productData.description.length} chars`);
+console.log(`Meets minimum order value: ${productData.price >= VALIDATION_CRITERIA.BUSINESS_RULES.MIN_ORDER_VALUE ? 'Yes' : 'No'}`);
+
+// Matching criteria example
+const searchCriteria = {
+  textMatch: MATCH_CRITERIA.TEXT_MATCH.CONTAINS,
+  priceComparison: MATCH_CRITERIA.NUMERIC_COMPARISON.BETWEEN,
+  dateFilter: MATCH_CRITERIA.DATE_COMPARISON.AFTER
+};
+
+console.log('\nSearch Matching Criteria:', JSON.stringify(searchCriteria, null, 2));
+
+console.log('\n=== End of Examples ===');

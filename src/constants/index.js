@@ -134,3 +134,134 @@ export const DEFAULTS = {
   TIMEZONE: 'UTC',
   COUNTRY: 'US',
 };
+
+// Search and Filter Criteria
+export const CRITERIA = {
+  // Sort Options
+  SORT: {
+    NAME_ASC: 'name_asc',
+    NAME_DESC: 'name_desc',
+    DATE_ASC: 'date_asc',
+    DATE_DESC: 'date_desc',
+    PRICE_ASC: 'price_asc',
+    PRICE_DESC: 'price_desc',
+    POPULARITY: 'popularity',
+    RATING: 'rating',
+  },
+
+  // Filter Categories
+  FILTER: {
+    STATUS: {
+      ACTIVE: 'active',
+      INACTIVE: 'inactive',
+      PENDING: 'pending',
+      COMPLETED: 'completed',
+      CANCELLED: 'cancelled',
+    },
+    PRIORITY: {
+      LOW: 'low',
+      MEDIUM: 'medium',
+      HIGH: 'high',
+      URGENT: 'urgent',
+    },
+    CATEGORY: {
+      PRODUCT: 'product',
+      SERVICE: 'service',
+      SUBSCRIPTION: 'subscription',
+      DIGITAL: 'digital',
+    },
+  },
+
+  // Search Parameters
+  SEARCH: {
+    MIN_QUERY_LENGTH: 2,
+    MAX_QUERY_LENGTH: 100,
+    DEFAULT_LIMIT: 20,
+    MAX_LIMIT: 100,
+    DEBOUNCE_DELAY: 300, // ms
+  },
+
+  // Date Range Criteria
+  DATE_RANGE: {
+    TODAY: 'today',
+    YESTERDAY: 'yesterday',
+    LAST_WEEK: 'last_week',
+    LAST_MONTH: 'last_month',
+    LAST_QUARTER: 'last_quarter',
+    LAST_YEAR: 'last_year',
+    CUSTOM: 'custom',
+  },
+
+  // Price Range Criteria
+  PRICE_RANGE: {
+    UNDER_10: 'under_10',
+    BETWEEN_10_50: '10_to_50',
+    BETWEEN_50_100: '50_to_100',
+    BETWEEN_100_500: '100_to_500',
+    OVER_500: 'over_500',
+    CUSTOM: 'custom',
+  },
+};
+
+// Matching and Comparison Criteria
+export const MATCH_CRITERIA = {
+  // Text Matching
+  TEXT_MATCH: {
+    EXACT: 'exact',
+    CONTAINS: 'contains',
+    STARTS_WITH: 'starts_with',
+    ENDS_WITH: 'ends_with',
+    REGEX: 'regex',
+    FUZZY: 'fuzzy',
+  },
+
+  // Numeric Comparison
+  NUMERIC_COMPARISON: {
+    EQUAL: 'equal',
+    NOT_EQUAL: 'not_equal',
+    GREATER_THAN: 'greater_than',
+    GREATER_THAN_OR_EQUAL: 'greater_than_or_equal',
+    LESS_THAN: 'less_than',
+    LESS_THAN_OR_EQUAL: 'less_than_or_equal',
+    BETWEEN: 'between',
+    IN_RANGE: 'in_range',
+  },
+
+  // Date Comparison
+  DATE_COMPARISON: {
+    BEFORE: 'before',
+    AFTER: 'after',
+    ON: 'on',
+    BETWEEN: 'between',
+    RELATIVE: 'relative',
+  },
+};
+
+// Validation Criteria
+export const VALIDATION_CRITERIA = {
+  // Required Field Validation
+  REQUIRED_FIELDS: {
+    USER_REGISTRATION: ['email', 'password', 'firstName', 'lastName'],
+    PRODUCT_CREATION: ['name', 'price', 'category', 'description'],
+    ORDER_PLACEMENT: ['items', 'shippingAddress', 'paymentMethod'],
+  },
+
+  // Content Quality Criteria
+  QUALITY: {
+    MIN_DESCRIPTION_LENGTH: 50,
+    MAX_DESCRIPTION_LENGTH: 500,
+    MIN_TITLE_LENGTH: 5,
+    MAX_TITLE_LENGTH: 100,
+    REQUIRED_IMAGE_COUNT: 1,
+    MAX_IMAGE_COUNT: 10,
+  },
+
+  // Business Rules Criteria
+  BUSINESS_RULES: {
+    MIN_ORDER_VALUE: 10.00,
+    FREE_SHIPPING_THRESHOLD: 50.00,
+    MAX_DISCOUNT_PERCENT: 90,
+    MIN_PRODUCT_RATING: 1,
+    MAX_PRODUCT_RATING: 5,
+  },
+};
