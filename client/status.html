@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status - VE</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>VE</h1>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <div class="nav-menu" id="primary-menu">
+                <a href="index.html">Products</a>
+                <a href="cart.html">Cart</a>
+                <a href="login.html" id="auth-link">Login</a>
+                <a href="status.html" class="active">Status</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="products">
+        <div class="container">
+            <h2 class="mb-4">System Status</h2>
+            <div class="grid grid-cols-2 card p-4">
+                <div>
+                    <h3>Health</h3>
+                    <pre id="health" class="mt-2 text-muted">Loading...</pre>
+                </div>
+                <div>
+                    <h3>Readiness</h3>
+                    <pre id="ready" class="mt-2 text-muted">Loading...</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 VE - E-Commerce Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+        async function fetchJson(url) {
+            const res = await fetch(url);
+            return res.json();
+        }
+        async function loadStatus() {
+            try {
+                    const base = (window.api && window.api.baseURL)
+                        ? new URL(window.api.baseURL).origin
+                        : 'http://localhost:3000';
+                    const [health, ready] = await Promise.all([
+                        fetchJson(`${base}/healthz`),
+                        fetchJson(`${base}/readyz`),
+                    ]);
+                document.getElementById('health').textContent = JSON.stringify(health, null, 2);
+                document.getElementById('ready').textContent = JSON.stringify(ready, null, 2);
+            } catch (e) {
+                document.getElementById('health').textContent = 'Error fetching status';
+                document.getElementById('ready').textContent = 'Error fetching status';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadStatus);
+    </script>
+</body>
+
+</html>
