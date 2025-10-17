@@ -1,0 +1,238 @@
+{
+    "meta": {
+        "version": "1.0.0",
+        "generated": "2025-10-17T00:00:00Z",
+        "environment": "development",
+        "description": "Local seed data for development - no real credentials or sensitive data"
+    },
+    "app": {
+        "name": "VE Platform (Dev)",
+        "version": "1.0.0-dev",
+        "environment": "development",
+        "port": 3000,
+        "host": "localhost"
+    },
+    "auth": {
+        "jwtSecret": "dev-secret-change-in-production",
+        "jwtExpiration": "7d",
+        "sessionTimeout": 30,
+        "bcryptRounds": 10
+    },
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "name": "ve_dev",
+        "user": "postgres",
+        "password": "postgres",
+        "pool": {
+            "min": 2,
+            "max": 10
+        }
+    },
+    "api": {
+        "baseUrl": "http://localhost:3000/api",
+        "timeout": 30000,
+        "retryAttempts": 3,
+        "version": "v1"
+    },
+    "business": {
+        "taxRate": 0.08,
+        "currency": "USD",
+        "currencySymbol": "$",
+        "minOrderValue": 10,
+        "freeShippingThreshold": 50
+    },
+    "products": {
+        "list": [
+            {
+                "id": "prod_001",
+                "name": "Premium Wireless Headphones",
+                "description": "High-quality wireless headphones with noise cancellation",
+                "price": 299.99,
+                "category": "Electronics",
+                "stock": 50,
+                "imageUrl": "https://via.placeholder.com/300x200?text=Headphones",
+                "featured": true
+            },
+            {
+                "id": "prod_002",
+                "name": "Smart Fitness Watch",
+                "description": "Track your fitness goals with this advanced smartwatch",
+                "price": 199.99,
+                "category": "Electronics",
+                "stock": 30,
+                "imageUrl": "https://via.placeholder.com/300x200?text=Watch",
+                "featured": true
+            },
+            {
+                "id": "prod_003",
+                "name": "Ergonomic Office Chair",
+                "description": "Comfortable chair for long work sessions",
+                "price": 399.99,
+                "category": "Furniture",
+                "stock": 15,
+                "imageUrl": "https://via.placeholder.com/300x200?text=Chair",
+                "featured": false
+            },
+            {
+                "id": "prod_004",
+                "name": "Mechanical Keyboard",
+                "description": "Premium mechanical keyboard with RGB lighting",
+                "price": 149.99,
+                "category": "Electronics",
+                "stock": 40,
+                "imageUrl": "https://via.placeholder.com/300x200?text=Keyboard",
+                "featured": false
+            },
+            {
+                "id": "prod_005",
+                "name": "4K Webcam",
+                "description": "Crystal clear video calls with 4K resolution",
+                "price": 179.99,
+                "category": "Electronics",
+                "stock": 25,
+                "imageUrl": "https://via.placeholder.com/300x200?text=Webcam",
+                "featured": true
+            }
+        ],
+        "categories": [
+            "Electronics",
+            "Furniture",
+            "Clothing",
+            "Books",
+            "Home & Garden"
+        ],
+        "featured": [
+            "prod_001",
+            "prod_002",
+            "prod_005"
+        ]
+    },
+    "users": {
+        "list": [
+            {
+                "id": "user_001",
+                "email": "admin@ve.local",
+                "name": "Admin User",
+                "role": "admin",
+                "passwordHash": "$2b$10$dummyHashForDevEnvironmentOnly"
+            },
+            {
+                "id": "user_002",
+                "email": "manager@ve.local",
+                "name": "Manager User",
+                "role": "manager",
+                "passwordHash": "$2b$10$dummyHashForDevEnvironmentOnly"
+            },
+            {
+                "id": "user_003",
+                "email": "user@ve.local",
+                "name": "Regular User",
+                "role": "user",
+                "passwordHash": "$2b$10$dummyHashForDevEnvironmentOnly"
+            }
+        ],
+        "roles": [
+            "admin",
+            "manager",
+            "user",
+            "guest"
+        ]
+    },
+    "orders": {
+        "list": [
+            {
+                "id": "order_001",
+                "userId": "user_003",
+                "items": [
+                    {
+                        "productId": "prod_001",
+                        "quantity": 1,
+                        "price": 299.99
+                    }
+                ],
+                "subtotal": 299.99,
+                "tax": 24.00,
+                "total": 323.99,
+                "status": "delivered",
+                "createdAt": "2025-10-10T10:00:00Z"
+            },
+            {
+                "id": "order_002",
+                "userId": "user_003",
+                "items": [
+                    {
+                        "productId": "prod_002",
+                        "quantity": 1,
+                        "price": 199.99
+                    },
+                    {
+                        "productId": "prod_004",
+                        "quantity": 1,
+                        "price": 149.99
+                    }
+                ],
+                "subtotal": 349.98,
+                "tax": 28.00,
+                "total": 377.98,
+                "status": "processing",
+                "createdAt": "2025-10-15T14:30:00Z"
+            }
+        ],
+        "statuses": [
+            "pending",
+            "processing",
+            "shipped",
+            "delivered",
+            "cancelled"
+        ]
+    },
+    "cache": {
+        "enabled": false,
+        "ttl": 3600,
+        "redisUrl": "redis://localhost:6379"
+    },
+    "email": {
+        "smtp": {
+            "host": "localhost",
+            "port": 1025
+        },
+        "fromAddress": "noreply@ve.local"
+    },
+    "storage": {
+        "type": "local",
+        "localPath": "./uploads",
+        "s3": {
+            "bucket": "ve-dev-uploads"
+        }
+    },
+    "features": {
+        "enableRegistration": true,
+        "enableNotifications": true,
+        "enableAnalytics": false
+    },
+    "security": {
+        "cors": {
+            "origins": [
+                "http://localhost:8080",
+                "http://localhost:3000"
+            ]
+        },
+        "rateLimit": {
+            "windowMs": 900000,
+            "max": 100
+        }
+    },
+    "thirdParty": {
+        "stripe": {
+            "publicKey": "pk_test_dev_placeholder",
+            "secretKey": "sk_test_dev_placeholder"
+        },
+        "twilio": {
+            "accountSid": "dev_placeholder_sid"
+        },
+        "googleAnalytics": {
+            "trackingId": "UA-000000-0"
+        }
+    }
+}

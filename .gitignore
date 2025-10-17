@@ -43,3 +43,15 @@ temp/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Archive (duplicate files)
+.archive/
+
+# Seed data - KEEP seed.local.json committed for development
+# Only ignore production/custom seed files
+config/seed.production.json
+config/seed.staging.json
+config/seed.*.local.json
+
+# Schema artifacts
+config/*.schema.lock
