@@ -60,7 +60,7 @@ Successfully implemented a comprehensive schema-first architecture for the VE pl
 
 ### 3. Documentation
 
-**SCHEMA_ARCHITECTURE.md**
+#### SCHEMA_ARCHITECTURE.md
 
 - Complete architecture guide (400+ lines)
 - Branch strategy explanation
@@ -77,14 +77,14 @@ Successfully implemented a comprehensive schema-first architecture for the VE pl
 - Array data, environment detection
 - E-commerce calculations, feature flags
 
-**Updated README.md**
+#### Updated README.md
 
 - Added schema-first architecture overview
 - Quick commands section
 - Updated project structure
 - New documentation links
 
-**Updated IMPLEMENTATION_COMPLETE.md**
+#### Updated IMPLEMENTATION_COMPLETE.md
 
 - Added complete Phase 2 documentation
 - Updated statistics (5,500+ lines total)
@@ -93,16 +93,14 @@ Successfully implemented a comprehensive schema-first architecture for the VE pl
 
 ### 4. Branch Strategy
 
-**Created 3 Branches:**
+#### Created 3 Branches
 
 1. `main` - Framework only (key names + loaders, no real data)
 2. `chore/setup-schema` - Working branch for schema work (current)
 3. `backend/data-values` - Future real data values (separate)
 
-**Protection Strategy:**
+#### Protection Strategy
 
-- main should be protected (PRs required)
-- chore/setup-schema will merge to main via PR
 - backend/data-values never merges to main
 
 ## 📊 Statistics
@@ -136,7 +134,7 @@ node examples/config-provider-usage.js
 # Deduplication
 make dedupe-dry
 ✅ Found and categorized duplicates safely
-```
+```text
 
 ## 🎯 Key Achievements
 
@@ -171,7 +169,7 @@ make dedupe-dry
    ```bash
    git push origin chore/setup-schema
    # Then create PR: chore/setup-schema → main
-   ```
+   ```text
 
 2. **Set up branch protection on GitHub**
    - Repository Settings → Branches
@@ -220,7 +218,7 @@ const products = await ConfigProvider.get(SchemaKeys.PRODUCTS_LIST);
 // Get business config
 const businessConfig = await ConfigProvider.getByPrefix('business');
 console.log(businessConfig.taxRate); // 0.08
-```
+```text
 
 ### Development Commands
 
@@ -229,7 +227,7 @@ make schema        # Validate schemas
 make check         # Check config loads
 make dedupe-dry    # Preview duplicates
 make dev           # Start servers
-```
+```text
 
 ## 📚 Documentation
 

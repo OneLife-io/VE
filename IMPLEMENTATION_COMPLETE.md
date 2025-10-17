@@ -77,19 +77,15 @@ Before building the full-stack application, a comprehensive resources library wa
 - Security settings (CORS, rate limiting, Helmet)
 - Business settings (currency, tax rate, timezone)
 - Feature flags (enable/disable functionality)
-- Third-party integrations (Stripe, Twilio, Google Analytics)
-- Helper functions: `isProduction()`, `isDevelopment()`, `isTest()`, `getApiUrl()`
 
-**4. Documentation & Examples**
+#### 4. Documentation & Examples
 
-- Main README with project overview
-- Detailed src/README.md with API documentation
 - Working examples.js demonstrating all features
 - Real-world e-commerce cart example
 - .env.example template with all variables
 - Security best practices documentation
 
-**5. Verification & Testing**
+#### 5. Verification & Testing
 
 - ✅ All modules load correctly
 - ✅ Examples run successfully
@@ -229,7 +225,7 @@ Complete guide covering:
 
 #### Files Created (Phase 2)
 
-```
+```text
 src/config/
 ├── schema-keys.js              # Key definitions (API contract)
 └── config-provider.js          # Environment-based loader
@@ -248,13 +244,13 @@ Makefile                         # Development commands
 SCHEMA_ARCHITECTURE.md           # Architecture guide
 .gitignore (updated)            # Ignore .archive/, production seeds
 README.md (updated)             # Add schema-first sections
-```
+```text
 
 ---
 
 ## 🗂️ Complete Project Structure
 
-```
+```text
 VE/
 ├── 📚 PHASE 0: VE Resources Library (Foundation)
 │   ├── src/
@@ -305,7 +301,7 @@ VE/
 
 ⭐ = Files created/modified across both phases
 • = Specific functionality
-```
+```text
 
 ---
 
@@ -356,7 +352,7 @@ A complete Express.js REST API with:
 
 #### Files Created
 
-```
+```text
 server/
 ├── index.js                    # Main server file
 ├── package.json                # Dependencies
@@ -370,7 +366,7 @@ server/
     ├── products.js            # Product CRUD + search
     ├── cart.js                # Shopping cart
     └── orders.js              # Order management
-```
+```text
 
 ---
 
@@ -403,7 +399,7 @@ A responsive web application with vanilla HTML/CSS/JavaScript:
 
 #### Files Created
 
-```
+```text
 client/
 ├── index.html                  # Products page
 ├── cart.html                   # Shopping cart
@@ -415,7 +411,7 @@ client/
     ├── products.js            # Product catalog logic
     ├── cart.js                # Cart management
     └── auth.js                # Authentication logic
-```
+```text
 
 ---
 
@@ -485,7 +481,7 @@ cd client && npx serve . --listen 8080
 
 # 4. Open browser
 # http://localhost:8080/index.html
-```
+```text
 
 ### Testing the Application
 
@@ -551,7 +547,7 @@ The application actively uses your VE resources library throughout both backend 
 
 ### Integration Flow
 
-```
+```text
 VE Resources (Phase 0) → Foundation
     ↓
     ├─→ Backend API (Phase 1)
@@ -565,7 +561,7 @@ VE Resources (Phase 0) → Foundation
         ├─ Forms use VALIDATION patterns
         ├─ Cart displays use BUSINESS constants
         └─ API calls reference config.api
-```
+```text
 
 ---
 
@@ -583,7 +579,7 @@ gh auth login
 
 # Create all 148 issues
 ./create-github-issues.sh
-```
+```text
 
 ### Or Import Manually
 
@@ -647,7 +643,7 @@ gh auth login
 
 ## 📖 Documentation Structure
 
-```
+```text
 VE/
 ├── README.md                      # Original VE resources docs
 ├── FULLSTACK_README.md            # Full-stack app guide ⭐
@@ -659,7 +655,7 @@ VE/
 ├── create-github-issues.sh        # Issue creation script ⭐
 ├── setup.sh                       # Quick setup script ⭐
 └── examples.js                    # VE resources examples
-```
+```text
 
 ⭐ = New files created
 
@@ -723,7 +719,7 @@ VE/
 
 ### Total Implementation Across All Phases
 
-**Phase 0 (VE Resources Library):**
+#### Phase 0 (VE Resources Library):
 
 - ✅ 742 lines of production code
 - ✅ 3 core modules (constants, formulas, config)
@@ -734,7 +730,7 @@ VE/
 - ✅ Working examples demonstrating all features
 - ✅ Security best practices (CodeQL verified)
 
-**Phase 1 (Full-Stack Application):**
+#### Phase 1 (Full-Stack Application):
 
 - ✅ Working full-stack e-commerce application
 - ✅ Complete backend API (20+ endpoints)
@@ -745,7 +741,7 @@ VE/
 - ✅ Security features (JWT, rate limiting, CORS, Helmet)
 - ✅ Clear path to production (13 sprints)
 
-**Phase 2 (Schema-First Architecture):**
+#### Phase 2 (Schema-First Architecture):
 
 - ✅ Schema-driven configuration system
 - ✅ 70+ stable schema keys (public API contract)
@@ -758,7 +754,7 @@ VE/
 - ✅ 8 working usage examples
 - ✅ Branch strategy (main protected, schema/data separated)
 
-**Combined Total:**
+#### Combined Total:
 
 - 🎯 5,500+ lines of production code
 - 🎯 Backend: 5 routes, 3 middleware, 20+ API endpoints
@@ -800,7 +796,7 @@ VE/
 
 ### Project Evolution Timeline
 
-```
+```text
 Phase 0: VE Resources Library (Foundation)
 ├── Constants Module (136+ lines)
 ├── Formulas Module (240+ lines)  
@@ -851,7 +847,7 @@ Phase 2: Schema-First Architecture (Current)
 │   ├── chore/setup-schema
 │   └── backend/data-values
 └── ✅ Schema Architecture Complete
-```
+```text
 
 ├── Backend API Server (Express.js)
 │   ├── Authentication & Users
@@ -870,7 +866,7 @@ Phase 2: Schema-First Architecture (Current)
 │   └── CSV for Import
 └── ✅ MVP Complete
 
-```
+```text
 
 **Ready for production with schema-first architecture!** 🚀
 

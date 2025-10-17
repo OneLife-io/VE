@@ -24,7 +24,7 @@ VE uses a **schema-first architecture** that separates framework code from data 
 
 ## Project Structure
 
-```
+```text
 VE/
 ├── src/
 │   ├── constants/      # Application constants
@@ -53,7 +53,7 @@ VE/
 ├── package.json        # Project metadata
 ├── LICENSE             # MIT License
 └── README.md           # This file
-```
+```text
 
 ⭐ = New schema-first architecture files
 
@@ -68,7 +68,7 @@ cd VE
 
 # Install dependencies (if any)
 npm install
-```
+```text
 
 ### Configuration
 
@@ -76,13 +76,13 @@ npm install
 
    ```bash
    cp .env.example .env
-   ```
+   ```text
 
 2. Update the `.env` file with your configuration values
 
 ### Usage
 
-**Option 1: Schema-First ConfigProvider (Recommended)**
+#### Option 1: Schema-First ConfigProvider (Recommended)
 
 ```javascript
 import { ConfigProvider, SchemaKeys } from './src/config/config-provider.js';
@@ -100,9 +100,9 @@ const config = await ConfigProvider.getMany([
 
 // Get entire section
 const businessConfig = await ConfigProvider.getByPrefix('business');
-```
+```text
 
-**Option 2: Direct Import (Legacy)**
+#### Option 2: Direct Import (Legacy)
 
 ```javascript
 // Import specific resources
@@ -116,7 +116,7 @@ import VE from './src/index.js';
 console.log(VE.constants.APP_NAME);
 console.log(VE.formulas.calculatePriceWithTax(100, 0.08));
 console.log(VE.config.app.port);
-```
+```text
 
 ### Quick Commands
 
@@ -135,7 +135,7 @@ make dev
 
 # Run examples
 node examples/config-provider-usage.js
-```
+```text
 
 ## Features
 
@@ -158,7 +158,7 @@ node examples/config-provider-usage.js
 
 ### Formulas Module
 
-**Financial Calculations:**
+#### Financial Calculations:
 
 - Price with tax calculation
 - Discount calculation
@@ -167,19 +167,19 @@ node examples/config-provider-usage.js
 - Profit margin calculation
 - Markup calculation
 
-**Mathematical Calculations:**
+#### Mathematical Calculations:
 
 - Percentage calculation
 - Average calculation
 - Sum calculation
 - Compound interest calculation
 
-**Date and Time Calculations:**
+#### Date and Time Calculations:
 
 - Days between dates
 - Business days calculation
 
-**Data Conversions:**
+#### Data Conversions:
 
 - Bytes formatting
 - Decimal rounding

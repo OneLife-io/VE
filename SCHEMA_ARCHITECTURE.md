@@ -35,7 +35,7 @@ VE uses a **schema-first architecture** that separates framework code (key names
 - Require pull requests before merging
 - Require status checks to pass
 - No direct pushes allowed
-```
+```text
 
 ## 🗝️ Schema Keys
 
@@ -43,7 +43,7 @@ VE uses a **schema-first architecture** that separates framework code (key names
 
 Schema keys are **stable identifiers** for all configuration and data in the system. They act as the contract between your app and backend.
 
-**Example:**
+#### Example:
 
 ```javascript
 import { SchemaKeys } from './src/config/schema-keys.js';
@@ -52,7 +52,7 @@ import { SchemaKeys } from './src/config/schema-keys.js';
 SchemaKeys.APP_NAME           // "app.name"
 SchemaKeys.BUSINESS_TAX_RATE  // "business.taxRate"
 SchemaKeys.PRODUCTS_LIST      // "products.list"
-```
+```text
 
 ### Key Principles
 
@@ -85,15 +85,15 @@ const config = await ConfigProvider.getMany([
 
 // Get entire section
 const businessConfig = await ConfigProvider.getByPrefix('business');
-```
+```text
 
 ### How It Works
 
 #### Development Mode
 
-```
+```text
 ConfigProvider → config/seed.local.json → Returns dummy data
-```
+```text
 
 - Loads from `config/seed.local.json`
 - No network calls
@@ -102,9 +102,9 @@ ConfigProvider → config/seed.local.json → Returns dummy data
 
 #### Production Mode
 
-```
+```text
 ConfigProvider → Remote API → Returns real data
-```
+```text
 
 - Fetches from `CONFIG_API_URL` environment variable
 - Authenticated with `CONFIG_API_TOKEN`
@@ -133,9 +133,9 @@ ConfigProvider → Remote API → Returns real data
     "jwtSecret": "dev-secret-change-in-production"
   }
 }
-```
+```text
 
-**Important:**
+#### Important:
 
 - ✅ Committed to `main` branch
 - ✅ Safe dummy values only
@@ -150,7 +150,7 @@ Production values come from:
 - Remote configuration API
 - Secure vault (e.g., AWS Secrets Manager)
 
-**Never commit to `main`:**
+#### Never commit to `main`:
 
 - Real API keys
 - Production credentials
@@ -178,7 +178,7 @@ node scripts/dedupe-files.js --dry-run
 make dedupe-apply
 # or
 node scripts/dedupe-files.js --apply
-```
+```text
 
 ### How It Works
 
@@ -206,18 +206,18 @@ Customize with `--prefer`:
 
 ```bash
 node scripts/dedupe-files.js --prefer "src,app,lib" --apply
-```
+```text
 
 ### Archive Structure
 
-```
+```text
 .archive/
 └── duplicates/
     ├── conflict/          # Same name, different content
     │   ├── client/js/utils.js
     │   └── server/lib/utils.js
     └── [future categories]
-```
+```text
 
 ## 🛠️ Makefile Targets
 
@@ -243,7 +243,7 @@ make test          # Run tests (when available)
 make clean         # Remove build artifacts
 make clean-deps    # Remove node_modules
 make reset         # Full clean + clean-deps
-```
+```text
 
 ## 🔄 Operating Rhythm
 
@@ -254,20 +254,20 @@ make reset         # Full clean + clean-deps
 
    ```bash
    make dedupe-dry
-   ```
+   ```text
 
 3. **Check schema** if config changed
 
    ```bash
    make schema
    make check
-   ```
+   ```text
 
 4. **Develop** using ConfigProvider
 
    ```javascript
    const products = await ConfigProvider.get(SchemaKeys.PRODUCTS_LIST);
-   ```
+   ```text
 
 ### Adding New Configuration
 
@@ -278,7 +278,7 @@ make reset         # Full clean + clean-deps
      // ... existing keys
      MY_NEW_KEY: 'section.myNewKey',
    });
-   ```
+   ```text
 
 2. **Update schema** in `config/keys.schema.json`
 
@@ -290,7 +290,7 @@ make reset         # Full clean + clean-deps
      "required": false,
      "default": "default-value"
    }
-   ```
+   ```text
 
 3. **Add to seed** in `config/seed.local.json`
 
@@ -300,27 +300,27 @@ make reset         # Full clean + clean-deps
        "myNewKey": "dev-value"
      }
    }
-   ```
+   ```text
 
 4. **Validate**
 
    ```bash
    make schema
    make check
-   ```
+   ```text
 
 5. **Use in code**
 
    ```javascript
    const value = await ConfigProvider.get(SchemaKeys.MY_NEW_KEY);
-   ```
+   ```text
 
 6. **Commit to chore branch**
 
    ```bash
    git add src/config/schema-keys.js config/
    git commit -m "feat: add MY_NEW_KEY configuration"
-   ```
+   ```text
 
 7. **Open PR** to `main`
 
@@ -335,13 +335,13 @@ After running `make dedupe-apply`:
 
    ```bash
    cp .archive/duplicates/conflict/path/file.js src/correct/location/file.js
-   ```
+   ```text
 
 5. **Delete** archive when resolved:
 
    ```bash
    rm -rf .archive/duplicates/
-   ```
+   ```text
 
 ## 🚀 Migration from Old Config
 
@@ -352,14 +352,14 @@ If migrating from the existing `src/config/index.js`:
 ```javascript
 import config from './src/config/index.js';
 const taxRate = config.business.taxRate;
-```
+```text
 
 ### After (Schema-First)
 
 ```javascript
 import { ConfigProvider, SchemaKeys } from './src/config/config-provider.js';
 const taxRate = await ConfigProvider.get(SchemaKeys.BUSINESS_TAX_RATE);
-```
+```text
 
 ### Compatibility Layer
 
@@ -377,7 +377,7 @@ export default {
     }
   }
 };
-```
+```text
 
 ## 🔒 Security Best Practices
 
@@ -401,7 +401,7 @@ export default {
 
 ## 📚 File Reference
 
-```
+```text
 VE/
 ├── src/
 │   └── config/
@@ -416,7 +416,7 @@ VE/
 ├── .archive/                        # Archived conflicts (gitignored)
 ├── Makefile                         # Development commands
 └── .gitignore                       # Ignore production seeds
-```
+```text
 
 ## 🎯 Key Takeaways
 

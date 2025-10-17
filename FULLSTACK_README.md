@@ -16,14 +16,14 @@ Complete e-commerce platform built with Node.js, Express, and vanilla JavaScript
 ```bash
 cd server
 npm install
-```
+```text
 
 2. **Install Dependencies (if needed for VE resources)**
 
 ```bash
 cd ..
 npm install
-```
+```text
 
 ### Running the Application
 
@@ -32,7 +32,7 @@ npm install
 ```bash
 cd server
 npm run dev
-```
+```text
 
 Server will run on <http://localhost:3000>
 
@@ -44,13 +44,13 @@ cd client
 npx serve .
 # Or use Python
 python3 -m http.server 8080
-```
+```text
 
 Frontend will be available at <http://localhost:8080>
 
 ## 📁 Project Structure
 
-```
+```text
 VE/
 ├── src/                    # VE Resources Library
 │   ├── constants/         # Application constants
@@ -72,7 +72,7 @@ VE/
 ├── roadmap-tasks.csv    # Task breakdown (CSV)
 ├── GITHUB_ISSUES.md     # GitHub issues export
 └── create-github-issues.sh  # Issue creation script
-```
+```text
 
 ## 🎯 Features Implemented
 
@@ -147,7 +147,7 @@ VE/
 curl -X POST http://localhost:3000/api/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"password123","firstName":"John","lastName":"Doe"}'
-```
+```text
 
 ### 2. Login
 
@@ -155,13 +155,13 @@ curl -X POST http://localhost:3000/api/v1/auth/register \
 curl -X POST http://localhost:3000/api/v1/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"password123"}'
-```
+```text
 
 ### 3. Get Products
 
 ```bash
 curl http://localhost:3000/api/v1/products
-```
+```text
 
 ### 4. Add to Cart (requires token)
 
@@ -170,7 +170,7 @@ curl -X POST http://localhost:3000/api/v1/cart/items \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -d '{"productId":1,"quantity":2}'
-```
+```text
 
 ## 🎨 Frontend Usage
 
@@ -200,7 +200,7 @@ gh auth login
 
 # Create issues
 ./create-github-issues.sh
-```
+```text
 
 ## 📊 Project Metrics
 
@@ -283,7 +283,7 @@ CORS_ORIGIN=*
 RATE_LIMIT_ENABLED=true
 RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=100
-```
+```text
 
 ## 🤝 Contributing
 
