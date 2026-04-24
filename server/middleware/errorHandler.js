@@ -39,7 +39,11 @@ export const errorHandler = (err, req, res, next) => {
     if (err.name === 'ValidationError') {
         statusCode = HTTP_STATUS.BAD_REQUEST;
         message = ERROR_MESSAGES.VALIDATION;
-        errors = Object.values(err.details || {}).map(detail => detail.message);
+        if (err.details && typeof err.details === 'object' && !Array.isArray(err.details)) {
+            errors = Object.values(err.details).map(detail => detail.message);
+        } else {
+            errors = [];
+        }
     }
 
     if (err.name === 'JsonWebTokenError') {
