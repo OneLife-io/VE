@@ -186,8 +186,24 @@ router.put('/:id', authenticate, isAdminOrManager, asyncHandler(async (req, res)
     if (description) products[productIndex].description = description;
     if (price !== undefined) products[productIndex].price = Number(price);
     if (category) products[productIndex].category = category;
-    if (stock !== undefined) products[productIndex].stock = Number(stock);
-    if (status) products[productIndex].status = status;
+
+    // Validate stock
+    if (stock !== undefined) {
+        const stockValue = Number(stock);
+        if (!Number.isInteger(stockValue) || stockValue < 0) {
+            return res.status(400).json({ error: 'Stock must be a non-negative integer.' });
+        }
+        products[productIndex].stock = stockValue;
+    }
+
+    // Validate status
+    const allowedStatuses = ['active', 'inactive', 'archived'];
+    if (status) {
+        if (!allowedStatuses.includes(status)) {
+            return res.status(400).json({ error: `Status must be one of: ${allowedStatuses.join(', ')}` });
+        }
+        products[productIndex].status = status;
+    }
 
     res.json({
         message: SUCCESS_MESSAGES.UPDATED,
