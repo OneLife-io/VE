@@ -1,0 +1,26 @@
+{
+  "name": "ve",
+  "version": "1.0.0",
+  "description": "Business Application and Website",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VETechnologiesCo/VE.git"
+  },
+  "keywords": [
+    "business",
+    "application",
+    "constants",
+    "formulas",
+    "configuration"
+  ],
+  "author": "VETCO",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,383 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "VE Configuration Schema",
+    "description": "Defines all configuration keys and their types for the VE application",
+    "version": "1.0.0",
+    "keys": [
+        {
+            "key": "app.name",
+            "type": "string",
+            "description": "Application name",
+            "required": true,
+            "default": "VE Platform"
+        },
+        {
+            "key": "app.version",
+            "type": "string",
+            "description": "Application version",
+            "required": true,
+            "default": "1.0.0"
+        },
+        {
+            "key": "app.environment",
+            "type": "string",
+            "enum": [
+                "development",
+                "staging",
+                "production"
+            ],
+            "description": "Current environment",
+            "required": true,
+            "default": "development"
+        },
+        {
+            "key": "app.port",
+            "type": "number",
+            "description": "Server port",
+            "required": true,
+            "default": 3000
+        },
+        {
+            "key": "app.host",
+            "type": "string",
+            "description": "Server host",
+            "required": true,
+            "default": "localhost"
+        },
+        {
+            "key": "auth.jwtSecret",
+            "type": "string",
+            "description": "JWT signing secret",
+            "required": true,
+            "sensitive": true
+        },
+        {
+            "key": "auth.jwtExpiration",
+            "type": "string",
+            "description": "JWT token expiration",
+            "required": true,
+            "default": "7d"
+        },
+        {
+            "key": "auth.sessionTimeout",
+            "type": "number",
+            "description": "Session timeout in minutes",
+            "required": false,
+            "default": 30
+        },
+        {
+            "key": "auth.bcryptRounds",
+            "type": "number",
+            "description": "Bcrypt hashing rounds",
+            "required": true,
+            "default": 10
+        },
+        {
+            "key": "database.host",
+            "type": "string",
+            "description": "Database host",
+            "required": true,
+            "default": "localhost"
+        },
+        {
+            "key": "database.port",
+            "type": "number",
+            "description": "Database port",
+            "required": true,
+            "default": 5432
+        },
+        {
+            "key": "database.name",
+            "type": "string",
+            "description": "Database name",
+            "required": true
+        },
+        {
+            "key": "database.user",
+            "type": "string",
+            "description": "Database user",
+            "required": true,
+            "sensitive": true
+        },
+        {
+            "key": "database.password",
+            "type": "string",
+            "description": "Database password",
+            "required": true,
+            "sensitive": true
+        },
+        {
+            "key": "database.pool.min",
+            "type": "number",
+            "description": "Min pool connections",
+            "required": false,
+            "default": 2
+        },
+        {
+            "key": "database.pool.max",
+            "type": "number",
+            "description": "Max pool connections",
+            "required": false,
+            "default": 10
+        },
+        {
+            "key": "api.baseUrl",
+            "type": "string",
+            "description": "API base URL",
+            "required": true
+        },
+        {
+            "key": "api.timeout",
+            "type": "number",
+            "description": "API timeout in ms",
+            "required": false,
+            "default": 30000
+        },
+        {
+            "key": "api.retryAttempts",
+            "type": "number",
+            "description": "API retry attempts",
+            "required": false,
+            "default": 3
+        },
+        {
+            "key": "api.version",
+            "type": "string",
+            "description": "API version",
+            "required": false,
+            "default": "v1"
+        },
+        {
+            "key": "business.taxRate",
+            "type": "number",
+            "description": "Tax rate percentage",
+            "required": true,
+            "default": 0.08
+        },
+        {
+            "key": "business.currency",
+            "type": "string",
+            "description": "Currency code",
+            "required": true,
+            "default": "USD"
+        },
+        {
+            "key": "business.currencySymbol",
+            "type": "string",
+            "description": "Currency symbol",
+            "required": true,
+            "default": "$"
+        },
+        {
+            "key": "business.minOrderValue",
+            "type": "number",
+            "description": "Minimum order value",
+            "required": false,
+            "default": 10
+        },
+        {
+            "key": "business.freeShippingThreshold",
+            "type": "number",
+            "description": "Free shipping threshold",
+            "required": false,
+            "default": 50
+        },
+        {
+            "key": "products.list",
+            "type": "array",
+            "description": "Product catalog",
+            "required": false,
+            "itemType": "object"
+        },
+        {
+            "key": "products.categories",
+            "type": "array",
+            "description": "Product categories",
+            "required": false,
+            "itemType": "string"
+        },
+        {
+            "key": "products.featured",
+            "type": "array",
+            "description": "Featured product IDs",
+            "required": false,
+            "itemType": "string"
+        },
+        {
+            "key": "users.list",
+            "type": "array",
+            "description": "User accounts",
+            "required": false,
+            "itemType": "object",
+            "sensitive": true
+        },
+        {
+            "key": "users.roles",
+            "type": "array",
+            "description": "Available user roles",
+            "required": true,
+            "default": [
+                "admin",
+                "manager",
+                "user",
+                "guest"
+            ]
+        },
+        {
+            "key": "orders.list",
+            "type": "array",
+            "description": "Order history",
+            "required": false,
+            "itemType": "object"
+        },
+        {
+            "key": "orders.statuses",
+            "type": "array",
+            "description": "Available order statuses",
+            "required": true,
+            "default": [
+                "pending",
+                "processing",
+                "shipped",
+                "delivered",
+                "cancelled"
+            ]
+        },
+        {
+            "key": "cache.enabled",
+            "type": "boolean",
+            "description": "Enable caching",
+            "required": false,
+            "default": false
+        },
+        {
+            "key": "cache.ttl",
+            "type": "number",
+            "description": "Cache TTL in seconds",
+            "required": false,
+            "default": 3600
+        },
+        {
+            "key": "cache.redisUrl",
+            "type": "string",
+            "description": "Redis connection URL",
+            "required": false,
+            "sensitive": true
+        },
+        {
+            "key": "email.smtp.host",
+            "type": "string",
+            "description": "SMTP host",
+            "required": false
+        },
+        {
+            "key": "email.smtp.port",
+            "type": "number",
+            "description": "SMTP port",
+            "required": false,
+            "default": 587
+        },
+        {
+            "key": "email.fromAddress",
+            "type": "string",
+            "description": "Email from address",
+            "required": false
+        },
+        {
+            "key": "storage.type",
+            "type": "string",
+            "enum": [
+                "local",
+                "s3"
+            ],
+            "description": "Storage type",
+            "required": true,
+            "default": "local"
+        },
+        {
+            "key": "storage.localPath",
+            "type": "string",
+            "description": "Local storage path",
+            "required": false,
+            "default": "./uploads"
+        },
+        {
+            "key": "storage.s3.bucket",
+            "type": "string",
+            "description": "S3 bucket name",
+            "required": false
+        },
+        {
+            "key": "features.enableRegistration",
+            "type": "boolean",
+            "description": "Enable user registration",
+            "required": false,
+            "default": true
+        },
+        {
+            "key": "features.enableNotifications",
+            "type": "boolean",
+            "description": "Enable notifications",
+            "required": false,
+            "default": true
+        },
+        {
+            "key": "features.enableAnalytics",
+            "type": "boolean",
+            "description": "Enable analytics",
+            "required": false,
+            "default": false
+        },
+        {
+            "key": "security.cors.origins",
+            "type": "array",
+            "description": "Allowed CORS origins",
+            "required": true,
+            "itemType": "string",
+            "default": [
+                "http://localhost:8080"
+            ]
+        },
+        {
+            "key": "security.rateLimit.windowMs",
+            "type": "number",
+            "description": "Rate limit window in ms",
+            "required": false,
+            "default": 900000
+        },
+        {
+            "key": "security.rateLimit.max",
+            "type": "number",
+            "description": "Max requests per window",
+            "required": false,
+            "default": 100
+        },
+        {
+            "key": "thirdParty.stripe.publicKey",
+            "type": "string",
+            "description": "Stripe public key",
+            "required": false,
+            "sensitive": true
+        },
+        {
+            "key": "thirdParty.stripe.secretKey",
+            "type": "string",
+            "description": "Stripe secret key",
+            "required": false,
+            "sensitive": true
+        },
+        {
+            "key": "thirdParty.twilio.accountSid",
+            "type": "string",
+            "description": "Twilio account SID",
+            "required": false,
+            "sensitive": true
+        },
+        {
+            "key": "thirdParty.googleAnalytics.trackingId",
+            "type": "string",
+            "description": "Google Analytics tracking ID",
+            "required": false
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, chore/**, feature/** ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  safety-checks:
+    name: Safety checks (schema, config, examples)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Print Node.js versions
+        run: |
+          node -v
+          npm -v
+
+      - name: Install (root)
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Validate schema files
+        run: make schema
+
+      - name: Check ConfigProvider
+        run: make check
+
+      - name: Run examples (ConfigProvider usage)
+        run: node examples/config-provider-usage.js
+
+      - name: Duplicate file dry-run (optional)
+        run: node scripts/dedupe-files.js --dry-run
+        continue-on-error: true
+
+      - name: Upload artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-and-state
+          path: |
+            .
+          if-no-files-found: ignore
+          retention-days: 3
